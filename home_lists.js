@@ -1,5 +1,6 @@
 // This is the array that will hold the todo list items
 let todoItems = [];
+console.log(todoItems)
 //
 //
 //
@@ -26,23 +27,20 @@ function renderTodo(todo) {
   const node = document.createElement("li");
 
   // Set the class attribute
-  node.setAttribute("class", `todo-item  shadow rounded-4 d-flex-row align-items-center my-2 ${isChecked}`);
+  node.setAttribute("class", `todo-item  shadow rounded-4 d-flex-row align-items-center my-5 p-5 ${isChecked}`);
 
   // Set the data-key attribute to the id of the todo
   node.setAttribute("data-key", todo.id);
 
+
+  const path = 'list1.html'
   // Set the contents of the `li` element created above
   node.innerHTML = `
       
-  <input class="form-check-input fs-1 rounded-pill mx-2 mb-2    js-tick" id="${todo.id}"   type="checkbox"/>             
-  <label for="${todo.id}" class="js-tick"></label>
-  <span class="text-start mx-0">${todo.text}</span>
-  
-  <button  class="btn btn-outline-none  rounded-pill border-0  delete-todo js-delete-todo">
-  
-  <i class=" trash-icon bi bi-trash fs-1" href="#delete-icon"></i>
-  </button>
-     
+ 
+  <span class="text-center m-5">${todo.text}</span>
+  <a href="${path}" class="col-1"><i class="bi bi-arrow-right fs-1"></i></a>
+
     `;
   // 
   // Append the element to the DOM as the last child of

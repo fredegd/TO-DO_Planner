@@ -10,9 +10,10 @@ html {
   
   body {
    line-height: 1.4;
-   background: linear-gradient(180deg, #F6D7A7 0%, #F6EABE 55.21%, #C8E3D4 100%);
    min-height: 100vh;
    height: auto;
+   background: linear-gradient(180deg, #F6D7A7 0%, #F6EABE 55.21%, #C8E3D4 100%);
+   background-size: 100% 100%;
   }
   
   .container {
@@ -43,6 +44,42 @@ html {
     justify-content: space-between;
   }
   
+ .form-color-selector{
+  background: #F3F0D7;
+ }
+  .color-item{
+    list-style: none;
+  }
+
+  .color-icon{
+    width: 3em;
+    height: 3em;
+    border-radius: 1.5em;
+    border: none;
+  }
+  #button-red{
+    background-color: #ffb8b8;
+  }
+  #button-orange{
+    background-color: #FBCA9E;
+  }
+  #button-yellow{
+    background-color: #FDF0AD;
+  }
+  #button-green{
+    background-color: #BDEEC5;
+  }
+  #button-lightblue{
+    background-color: #A9FAFA;
+  }
+  #button-lila{
+    background-color: #ADACEB;
+  }
+  #button-pink{
+    background-color: #FFAFFC;
+  }
+
+
   .todo-list-container {
     list-style: none;
     display: flex;
@@ -66,10 +103,10 @@ html {
 
   }
   
-s
+
   .todo-item span {
     flex-grow: 1;
-    font-size: 2.5em;
+    font-size: 1.25em;
     /* margin-left: 1em; */
   }
   
@@ -92,7 +129,10 @@ s
    color:  #538484;
    border: none;
   }
-
+  .trash-icon::content{
+    color:  #538484;
+    border: none;
+   }
   
   .delete-todo {
     border: none;
