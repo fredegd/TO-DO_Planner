@@ -34,16 +34,12 @@ function renderTodo(todo) {
   // Set the contents of the `li` element created above
   node.innerHTML = `
       
-  <input class="form-check-input fs-1 rounded-pill mx-2 mb-2    js-tick" id="${todo.id}"   type="checkbox"/>             
+  <input class="form-check-input fs-1 rounded-5 mx-2 mb-2 fw-1    js-tick" id="${todo.id}"   type="checkbox"/>             
   <label for="${todo.id}" class="js-tick"></label>
-  <span class="text-start mx-0">${todo.text}</span>
-  
-  <button  class="btn btn-outline-none  rounded-pill border-0  delete-todo js-delete-todo">
-  
-  <i class=" trash-icon bi bi-trash fs-1" href="#delete-icon"></i>
-  </button>
-     
+  <span class="text-start  overflow-hidden mx-0">${todo.text}</span>
+  <i class=" trash-icon bi bi-trash fs-1 mx-3  delete-todo js-delete-todo" href="#delete-icon"></i>
     `;
+
   // 
   // Append the element to the DOM as the last child of
   // the element referenced by the `list` variable
@@ -91,6 +87,7 @@ function toggleDone(key) {
 //
 //
 //
+
 
 function deleteTodo(key) {
    // find the corresponding todo object in the todoItems array
@@ -143,17 +140,28 @@ form.addEventListener("submit", (event) => {
 //
 //
 //
-const list = document.querySelector('.js-todo-list');
 // Add a click event listener to the list and its children
+const list = document.querySelector('.js-todo-list');
 list.addEventListener('click', event => {
   if (event.target.classList.contains('js-tick')) {
     const itemKey = event.target.parentElement.dataset.key;
     toggleDone(itemKey);
   }
-
+  
   if (event.target.classList.contains('js-delete-todo')) {
     const itemKey = event.target.parentElement.dataset.key;
     deleteTodo(itemKey);
+  }
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const ref = localStorage.getItem('todoItems');
+  if (ref) {
+    todoItems = JSON.parse(ref);
+    todoItems.forEach(t => {
+      renderTodo(t);
+    });
   }
 });
 

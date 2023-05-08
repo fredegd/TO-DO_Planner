@@ -23,7 +23,6 @@ html {
     padding-left: 10px;
     padding-right: 10px;
     color: #333;
-   
     margin-top: 0vh;
     margin-bottom: 0vh;
     overflow-y: auto;
@@ -31,7 +30,6 @@ html {
   }
   
   .app-title {
-    
     font-family: 'Finger Paint', cursive;
     color: #202020;
     text-align: center;
@@ -142,5 +140,28 @@ html {
   }
   
   
-  
- 
+  /* Add this below all the other styles */
+
+.empty-state {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+.checklist-icon {
+  margin-bottom: 20px;
+}
+
+.empty-state__title, .empty-state__description {
+  margin-bottom: 20px;
+}
+
+/* Add this below the other styles */
+.todo-list:empty {
+  display: none;
+}
+
+.todo-list:empty + .empty-state {
+  display: flex;
+}
