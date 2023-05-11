@@ -28,8 +28,16 @@ html {
     overflow-y: auto;
     overflow-y:visible;
   }
-  
+
   .app-title {
+    font-family: 'Finger Paint', cursive;
+    color: #202020;
+    text-align: center;
+    font-size: 80px;
+  }
+
+  
+  .list-title {
     font-family: 'Finger Paint', cursive;
     color: #202020;
     text-align: center;
@@ -41,10 +49,11 @@ html {
     display: flex;
     justify-content: space-between;
   }
-  
+  /* mainpage */
  .form-color-selector{
   background: #F3F0D7;
  }
+ /*  */
   .color-item{
     list-style: none;
   }
@@ -54,6 +63,12 @@ html {
     height: 3em;
     border-radius: 1.5em;
     border: none;
+  }
+  .color-icon:checked{
+    width: 3em;
+    height: 3em;
+    border-radius: 1.5em;
+    border: 2px solid red;
   }
   #button-red{
     background-color: #ffb8b8;
@@ -76,7 +91,7 @@ html {
   #button-pink{
     background-color: #FFAFFC;
   }
-
+/*  */
 
   .todo-list-container {
     list-style: none;
@@ -100,7 +115,7 @@ html {
     text-align: left;
 
   }
-  
+
 
   .todo-item span {
     flex-grow: 1;
@@ -111,7 +126,7 @@ html {
 
   .done {
     background-color: #C8E3D4;
-    opacity: 75%;
+    /* opacity: 75%; */
   }
 
   .done span {
@@ -119,10 +134,10 @@ html {
     color: #9B9B9B;
   }
   
-  .done input[type="checkbox"] {
-    display: inline;
+  /* .done input[type="checkbox"] { 
+    background-color: #007836; 
   } 
-  
+   */
   .trash-icon::before{
    color:  #538484;
    border: none;
@@ -142,26 +157,6 @@ html {
   
   /* Add this below all the other styles */
 
-.empty-state {
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  display: none;
-}
-
 .checklist-icon {
   margin-bottom: 20px;
-}
-
-.empty-state__title, .empty-state__description {
-  margin-bottom: 20px;
-}
-
-/* Add this below the other styles */
-.todo-list:empty {
-  display: none;
-}
-
-.todo-list:empty + .empty-state {
-  display: flex;
 }

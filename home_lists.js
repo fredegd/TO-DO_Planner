@@ -1,11 +1,11 @@
 // This is the array that will hold the todo list items
-let todoItems = [];
-console.log(todoItems)
+let todoLists = [];
+console.log(todoLists)
 //
 //
 //
 //
-function renderTodo(todo) {
+function renderListBtn(todo) {
   // Select the first element with a class of `js-todo-list`
   const list = document.querySelector(".js-todo-list");
   const item = document.querySelector(`[data-key='${todo.id}']`);
@@ -14,8 +14,8 @@ function renderTodo(todo) {
   if (todo.deleted) {
     item.remove();
     // add this line to clear whitespace from the list container
-  // when `todoItems` is empty
-  if (todoItems.length === 0) list.innerHTML = '';
+  // when `todoLists` is empty
+  if (todoLists.length === 0) list.innerHTML = '';
     return
   }
 
@@ -23,32 +23,33 @@ function renderTodo(todo) {
   // if so, assign 'done' to `isChecked`. Otherwise, assign an empty string
   const isChecked = todo.checked ? "done" : "";
 
-  // Create an `li` element and assign it to `node`
-  const node = document.createElement("li");
+  // Create an `li` element and assign it to `listCard`
+  const listCard = document.createElement("li");
 
   // Set the class attribute
-  node.setAttribute("class", `todo-item  shadow rounded-4 d-flex-row align-items-center my-5 p-5 ${isChecked}`);
+  listCard.setAttribute("class", `todo-item container  shadow rounded-4   my-4 p-4 ${isChecked}`);
 
   // Set the data-key attribute to the id of the todo
-  node.setAttribute("data-key", todo.id);
+  listCard.setAttribute("data-key", todo.id);
 
 
   const path = 'list1.html'
   // Set the contents of the `li` element created above
-  node.innerHTML = `
-      
- 
-  <span class="text-center m-5">${todo.text}</span>
-  <a href="${path}" class="col-1"><i class="bi bi-arrow-right fs-1"></i></a>
+  listCard.innerHTML = `
 
+  <span class="col-7 text-left overflow-hidden">${todo.text}</span>
+  <span class="col-4 text-center my-5">${todo.amount} Tasks</span>
+  <a href="${path}" class="col-1"><i class="bi bi-arrow-right fs-1"></i></a>
+  
+  
     `;
   // 
   // Append the element to the DOM as the last child of
   // the element referenced by the `list` variable
   if (item) {
-    list.replaceChild(node, item);
+    list.replaceChild(listCard, item);
   } else {
-    list.append(node);
+    list.append(listCard);
   }
 }
 //
@@ -58,7 +59,7 @@ function renderTodo(todo) {
 //
 // This function will create a new todo object based on the
 // text that was entered in the text input, and push it into
-// the `todoItems` array
+// the `todoLists` array
 function addTodo(text) {
   const todo = {
     text,
@@ -66,9 +67,9 @@ function addTodo(text) {
     id: Date.now(),
   };
 
-  todoItems.push(todo);
+  todoLists.push(todo);
   //console.log(todo);
-  renderTodo(todo);
+  renderListBtn(todo);
 }
 //
 //
@@ -77,9 +78,9 @@ function addTodo(text) {
 //
 //
 function toggleDone(key) {
-  const index = todoItems.findIndex(item => item.id === Number(key));
-  todoItems[index].checked = !todoItems[index].checked;
-  renderTodo(todoItems[index]);
+  const index = todoLists.findIndex(item => item.id === Number(key));
+  todoLists[index].checked = !todoLists[index].checked;
+  renderListBtn(todoLists[index]);
 }
 //
 //
@@ -91,19 +92,19 @@ function toggleDone(key) {
 //
 
 function deleteTodo(key) {
-   // find the corresponding todo object in the todoItems array
-  const index = todoItems.findIndex(item => item.id === Number(key));
+   // find the corresponding todo object in the todoLists array
+  const index = todoLists.findIndex(item => item.id === Number(key));
 
   // Create a new object with properties of the current todo item
   // and a `deleted` property which is set to true
   const todo = {
     deleted: true,
-    ...todoItems[index]
+    ...todoLists[index]
   };
 
     // remove the todo item from the array by filtering it out
-  todoItems = todoItems.filter(item => item.id !== Number(key));
-  renderTodo(todo);
+  todoLists = todoLists.filter(item => item.id !== Number(key));
+  renderListBtn(todo);
 }
 //
 //

@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TO-DO List App</title>
+    <!-- regular css -->
     <link rel="stylesheet" href="style.css" />
+    <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -31,14 +33,13 @@
   </head>
   <body>
     <header>
-      <div class="container w-75 h-auto ">
+      <div class="container w-75 h-auto">
         <h1 class="app-title display-md-1 my-5">TO-DO APP</h1>
 
-        <div class="row d-flex align-items-center form-color-selector rounded-top-4 rounded-4 p-0">
-
-          
-            
-          <form class="js-form p-0 ">
+        <div
+          class="row d-flex align-items-center form-color-selector rounded-top-4 rounded-4 p-0"
+        >
+          <form class="js-form p-0">
             <input
               class="form-control rounded-4 task-input js-todo-input mt-0 mb-5 shadow"
               autofocus
@@ -48,22 +49,40 @@
             />
           </form>
 
-          <div class="container color-selector">
-            <div class="row  ">
-             <ul class="d-flex justify-content-evenly">
-              <li class="color-item"><button class="color-icon"  id="button-red"></button></li>
-              <li class="color-item"><button class="color-icon"  id="button-orange"></button></li>
-              <li class="color-item"><button class="color-icon"  id="button-yellow"></button></li>
-              <li class="color-item"><button class="color-icon"  id="button-green"></button></li>
-              <li class="color-item"><button class="color-icon"  id="button-lightblue"></button></li>
-              <li class="color-item"><button class="color-icon"  id="button-lila"></button></li>
-              <li class="color-item"><button class="color-icon"  id="button-pink"></button></li>
-               
-             </ul>
+          <div class="color-selector shadow rounded-4">
+            <div class="row">
+              <ul class="d-flex justify-content-evenly">
+                <li>
+                  <input
+                    class="form-check-input fs-1 rounded-5 mx-2 mb-2 fw-1 js-tick"
+                    type="checkbox"
+                  />
+                </li>
+                <li class="color-item">
+                  <button class="color-icon shadow" id="button-red"></button>
+                </li>
+                <li class="color-item">
+                  <button class="color-icon" id="button-orange"></button>
+                </li>
+                <li class="color-item">
+                  <button class="color-icon" id="button-yellow"></button>
+                </li>
+                <li class="color-item">
+                  <button class="color-icon" id="button-green"></button>
+                </li>
+                <li class="color-item">
+                  <button class="color-icon" id="button-lightblue"></button>
+                </li>
+                <li class="color-item">
+                  <button class="color-icon" id="button-lila"></button>
+                </li>
+                <li class="color-item">
+                  <button class="color-icon" id="button-pink"></button>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-
       </div>
     </header>
 
@@ -84,3 +103,5 @@
     ></script>
   </body>
 </html>
+
+<div class="row"></div>
