@@ -22,11 +22,11 @@ body {
       padding-top: 100px;
   }
   
-  form {
+  /* form {
     text-align: center;
     margin-top: 20px;
-  }
-  
+  } */
+/*   
   input[type="text"] {
     padding: 10px;
     font-size: 16px;
@@ -44,14 +44,15 @@ body {
     background-color: #4CAF50;
     color: white;
   }
-  
+   */
   ul {
+
     list-style: none;
     padding: 0;
     margin-top: 20px;
   }
   
-  li {
+  /* li {
     background-color: #A9FAFA;
     padding: 10px;
     border-radius: 5px;
@@ -59,15 +60,15 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
+  } */
   
-  li button {
+  /* li button {
     background-color: #f44336;
     color: white;
     border: none;
     border-radius: 5px;
     padding: 5px 10px;
-  }
+  } */
   footer {
     position: fixed;
     bottom: 0;
@@ -78,38 +79,80 @@ body {
     font-style: oblique;
     font-family: 'Finger Paint', cursive;
 }
-.done {
-  text-decoration: line-through;
-}
-#todo-list {
-  width: 50%;
-  
-}
 
-.list-1 {
-background-color: #FDF0AD;
-
-}
-
-.list-2 {
-  background-color: #BDEEC5;
-}
-.list-3 {
-  background-color: #A9FAFA;
-}
-.list-4 {
-  background-color: #ADACEB;
-}
-#todo-container {
+.btn-group-vertical {
   display: flex;
   justify-content: center;
-  align-items: center;
-  font-family: 'Finger Paint';
-  font-weight: 700;
-  font-style: normal;
- 
+  flex-direction: column;
+  width: 250px;
+  padding-top: 45px;
+  margin-left: 600px;
 }
-.open {
+/* .done {
+  text-decoration: line-through;
+} */
+
+/* #todo-list {
+  width: 50%;
+
+  
+} */
+
+.btn1 {
+width: 300px;
+height: 50px;
+color: black;
+background-color: #FDF0AD !important;
+margin-bottom: 10px;
+border-radius: 10px;
+font-family: 'Finger Paint', cursive;
+font-size: medium;
+font-weight: 700;
+font-style: oblique;
+}
+
+.btn2 {
+  width: 300px;
+  height: 50px;
+  color: black;
+  background-color: #BDEEC5;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  font-family: 'Finger Paint', cursive;
+  font-size: medium;
+  font-weight: 700;
+  font-style: oblique;
+}
+
+.btn3 {
+  width: 300px;
+  height: 50px;
+  color: black;
+  background-color: #A9FAFA;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  font-family: 'Finger Paint', cursive;
+  font-size: medium;
+  font-weight: 700;
+  font-style: oblique;
+}
+.btn4 {
+  width: 300px;
+  height: 50px;
+  color: black;
+  background-color: #ADACEB;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  font-family: 'Finger Paint', cursive;
+  font-size: medium;
+  font-weight: 700;
+  font-style: oblique;
+}
+
+/* .open {
   background-color: yellowgreen;
   color: white;
   border: none;
@@ -117,4 +160,4 @@ background-color: #FDF0AD;
   padding: 5px 10px;
   font-style: normal;
   font-size: small;
-}
+} */
