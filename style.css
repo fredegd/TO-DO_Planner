@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 html {
     box-sizing: border-box;
   }
@@ -160,3 +161,168 @@ html {
 .checklist-icon {
   margin-bottom: 20px;
 }
+=======
+html,body {
+    height:100%;
+    min-height:100%;
+    max-height:100%;
+  }
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(#F6D7A7, #F6EABE, #C8E3D4);
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+
+
+  }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap');
+  h1 {
+      font-family: 'Finger Paint', cursive;
+      display: flex;
+      justify-content: center;
+      font-weight: 700;
+      padding-top: 100px;
+  }
+  
+  /* form {
+    text-align: center;
+    margin-top: 20px;
+  } */
+/*   
+  input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    width: 20%;
+    margin-right: 10px;
+  }
+  
+  button[type="submit"] {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+  }
+   */
+  ul {
+
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+  }
+  
+  /* li {
+    background-color: #A9FAFA;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  } */
+  
+  /* li button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+  } */
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 40%;
+    display: inline;
+    justify-content: center;
+    font-weight: 600;
+    font-style: oblique;
+    font-family: 'Finger Paint', cursive;
+}
+
+.btn-group-vertical {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 250px;
+  padding-top: 45px;
+  margin-left: 600px;
+}
+/* .done {
+  text-decoration: line-through;
+} */
+
+/* #todo-list {
+  width: 50%;
+
+  
+} */
+
+.btn1 {
+width: 300px;
+height: 50px;
+color: black;
+background-color: #FDF0AD !important;
+margin-bottom: 10px;
+border-radius: 10px;
+font-family: 'Finger Paint', cursive;
+font-size: medium;
+font-weight: 700;
+font-style: oblique;
+}
+
+.btn2 {
+  width: 300px;
+  height: 50px;
+  color: black;
+  background-color: #BDEEC5;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  font-family: 'Finger Paint', cursive;
+  font-size: medium;
+  font-weight: 700;
+  font-style: oblique;
+}
+
+.btn3 {
+  width: 300px;
+  height: 50px;
+  color: black;
+  background-color: #A9FAFA;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  font-family: 'Finger Paint', cursive;
+  font-size: medium;
+  font-weight: 700;
+  font-style: oblique;
+}
+.btn4 {
+  width: 300px;
+  height: 50px;
+  color: black;
+  background-color: #ADACEB;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  font-family: 'Finger Paint', cursive;
+  font-size: medium;
+  font-weight: 700;
+  font-style: oblique;
+}
+
+/* .open {
+  background-color: yellowgreen;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-style: normal;
+  font-size: small;
+} */
+>>>>>>> f26f5bd5889af657d19d4b17603e4ceb7f45884f

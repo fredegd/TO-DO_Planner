@@ -1,7 +1,7 @@
 console.clear();
 
 document.addEventListener("DOMContentLoaded", () => {
-  const ref = localStorage.getItem("todos");
+  const ref = localStorage.getItem("todos", "titleStored");
   if (ref) {
     todoItems = JSON.parse(ref);
     todoItems.forEach((t) => {
@@ -10,10 +10,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-const localStorageTodoItems = JSON.parse(localStorage.getItem("todo"));
+
+
+const localStorageTodoItems = JSON.parse(localStorage.getItem("todos"));
+const localStorageTitle = JSON.parse(localStorage.getItem("titleStored"));
 
 // This is the array that will hold the todo list items
 let todoItems = localStorageTodoItems? localStorageTodoItems :[];
+
+
+document.querySelector('#list-title').innerHTML = localStorageTitle
+console.log(localStorageTitle)
+
+ //localStorageTitle;
 //
 //
 //
@@ -21,7 +30,7 @@ let todoItems = localStorageTodoItems? localStorageTodoItems :[];
 //this function checks if the todoItems array,
 //if it is empty, shows the welcome message.
   const emptyState = document.querySelector(".empty-state");
- const checkEmptyState = () => {
+  const checkEmptyState = () => {
   //console.log(emptyState,todoItems)
   if (todoItems.length > 0) {
      emptyState.style.display = "none";
@@ -113,7 +122,7 @@ function addTodo(text) {
 //
 //
 //
-//
+// toggle between done /undone 
 function toggleDone(key) {
   const index = todoItems.findIndex((item) => item.id === Number(key));
   todoItems[index].checked = !todoItems[index].checked;
@@ -136,6 +145,9 @@ function deleteTodo(key) {
 
   // remove the todo item from the array by filtering it out
   todoItems = todoItems.filter((item) => item.id !== Number(key));
+
+  // remove the item from the local storage
+  localStorage.removeItem(todo);
   displayTodo(todo);
   checkEmptyState();
 }
@@ -193,6 +205,7 @@ listen.addEventListener("click", (event) => {
 const editIcon = document.querySelector("#edit-list-title");
 // a variable to store the title
 const title = document.querySelector("#list-title");
+
 //create a new  div
 const formContainer = document.createElement("div");
 formContainer.setAttribute("class", "w-100 ");
@@ -222,6 +235,7 @@ editIcon.addEventListener("click", () => {
 titleForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const newTitle = document.getElementById("new-list-title").value;
+  localStorage.setItem("titleStored", JSON.stringify(newTitle));
   if (newTitle) {
     title.textContent = newTitle;
     form.reset();
