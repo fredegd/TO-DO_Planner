@@ -1,0 +1,168 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+ font-family: 'Finger Paint' cursive;
+ line-height: 1.4;
+ min-height: 100vh;
+ height: auto;
+ background: linear-gradient(180deg, #F6D7A7 0%, #F6EABE 55.21%, #C8E3D4 100%);
+ background-size: 100% 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #333;
+  margin-top: 0vh;
+  margin-bottom: 0vh;
+  overflow-y: auto;
+  overflow-y:visible;
+}
+
+.app-title {
+  font-family: 'Finger Paint', cursive;
+  color: #202020;
+  text-align: center;
+  font-size: 80px;
+}
+
+
+.list-title {
+  font-family: 'Finger Paint', cursive;
+  color: #202020;
+  text-align: center;
+  font-size: 80px;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+/* mainpage */
+.form-color-selector{
+background: #F3F0D7;
+}
+/*  */
+.color-item{
+  list-style: none;
+}
+
+.color-icon{
+  width: 3em;
+  height: 3em;
+  border-radius: 1.5em;
+  border: none;
+}
+.color-icon:checked{
+  width: 3em;
+  height: 3em;
+  border-radius: 1.5em;
+  border: 2px solid red;
+}
+#button-red{
+  background-color: #ffb8b8;
+}
+#button-orange{
+  background-color: #FBCA9E;
+}
+#button-yellow{
+  background-color: #FDF0AD;
+}
+#button-green{
+  background-color: #BDEEC5;
+}
+#button-lightblue{
+  background-color: #A9FAFA;
+}
+#button-lila{
+  background-color: #ADACEB;
+}
+#button-pink{
+  background-color: #FFAFFC;
+}
+/*  */
+
+.todo-list-container {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.task-input{
+  height: 4em;
+}
+
+.todo-item {
+  background-color: #FFBF86;
+  width: 100%;
+  height: 4em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+
+}
+
+
+.todo-item span {
+  flex-grow: 1;
+  font-size: 1.25em;
+  /* margin-left: 1em; */
+}
+
+
+.done {
+  background-color: #C8E3D4;
+  /* opacity: 75%; */
+}
+
+.done span {
+  text-decoration: line-through;
+  color: #9B9B9B;
+}
+
+.done .edit-task{
+  display: none;
+}
+
+.done input[type="checkbox"] { 
+  background-color:  #538484;
+  opacity: 50%;
+} 
+
+.trash-icon::before{
+ color:  #538484;
+ border: none;
+}
+.trash-icon::content{
+  color:  #538484;
+  border: none;
+ }
+
+.delete-todo {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+
+/* Add this below all the other styles */
+
+.checklist-icon {
+margin-bottom: 20px;
+}

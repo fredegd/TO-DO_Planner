@@ -1,53 +1,55 @@
 console.clear();
 
+let todoItems = []
+const emptyState = document.querySelector(".empty-state");
+const checkEmptyState = () => {
+  //console.log(emptyState,todoItems)
+  if (todoItems.length > 0) {
+    emptyState.style.display = "none";
+  } else {
+    emptyState.style.display = "block";
+  }
+};
+
 document.addEventListener("DOMContentLoaded", () => {
-  const ref = localStorage.getItem("todos", "titleStored");
-  if (ref) {
-    todoItems = JSON.parse(ref);
+  const localStorageTodoItems = localStorage.getItem("todos");
+  if (localStorageTodoItems) {
+    todoItems = JSON.parse(localStorageTodoItems);
     todoItems.forEach((t) => {
-      displayTodo(t);
+      displayTask(t);
+      console.log(t, "content is beig loaded");
     });
+  } else {
+    todoItems = []
   }
 });
 
-
-
-const localStorageTodoItems = JSON.parse(localStorage.getItem("todos"));
+//const localStorageTodoItems = JSON.parse(localStorage.getItem("todos"));
 const localStorageTitle = JSON.parse(localStorage.getItem("titleStored"));
 
 // This is the array that will hold the todo list items
-let todoItems = localStorageTodoItems? localStorageTodoItems :[];
-
-
-document.querySelector('#list-title').innerHTML = localStorageTitle
-console.log(localStorageTitle)
-
- //localStorageTitle;
+//let todoItems = localStorageTodoItems ? localStorageTodoItems : [];
+displayTask(todoItems);
+console.log(todoItems, " is the item");
+//localStorageTitle;
+document.querySelector("#list-title").innerHTML = localStorageTitle;
+console.log(localStorageTitle, " is the title");
 //
 //
 //
 //
 //this function checks if the todoItems array,
 //if it is empty, shows the welcome message.
-  const emptyState = document.querySelector(".empty-state");
-  const checkEmptyState = () => {
-  //console.log(emptyState,todoItems)
-  if (todoItems.length > 0) {
-     emptyState.style.display = "none";
-   } else {
-    emptyState.style.display = "block";
-  }
- }
-//
-//
-//
-//
-//
-function displayTodo(todo) {
 
+//
+//
+//
+//
+//
+function displayTask(todo) {
   // Select the first element with a class of `js-todo-list`
-  const list = document.querySelector(".js-todo-list"); // the <ul> element 
-  const item = document.querySelector(`[data-key='${todo.id}']`);
+  const list = document.querySelector(".js-todo-list"); // the <ul> element
+  const item = document.querySelector(`[data-key='${todo.id}']`); // select every task by their id
 
   //if deleted remove the todo-item
   if (todo.deleted) {
@@ -58,40 +60,41 @@ function displayTodo(todo) {
     return;
   }
 
-  // Use the ternary operator to check if `todo.checked` is true
-  // if so, assign the value 'done' to `isChecked`. Otherwise, assign an empty string
+  //  check if `todo.checked` is true
+  // if so, assign the  class '.done'  Otherwise, assign an empty string
   const isChecked = todo.checked ? "done" : "";
 
-  // Create an `li` element and assign it to `listItem`
-  const listItem = document.createElement("li");
+  // Create an `li` element and assign it to `taskItem`
+  const taskItem = document.createElement("li");
 
   // Set the class attribute for the li
-  listItem.setAttribute(
+  taskItem.setAttribute(
     "class",
     `todo-item  shadow rounded-4 d-flex-row  align-items-center my-2 ${isChecked}`
   );
 
   // Set the data-key attribute to be the id of the todo
-  listItem.setAttribute("data-key", todo.id);
+  taskItem.setAttribute("data-key", todo.id);
 
-  // Set the contents of the `li` element created above
-  listItem.innerHTML = `
+  // Set the html contents of the `li` element created above
+  taskItem.innerHTML = `
   <input class="form-check-input fs-1 rounded-5 mx-2 mb-2 fw-1   js-tick" id="${todo.id}"   type="checkbox"/>             
-  <label for="${todo.id}" class="js-tick"></label>
+  
   <span class="text-start  overflow-hidden mx-0">${todo.text}</span>
-  <i class=" trash-icon bi bi-trash fs-1 mx-3  delete-todo js-delete-todo" href="#delete-icon"></i>
+  <i class="bi bi-pencil fs-6 text-left edit-task"></i>
+  <i class=" trash-icon bi bi-trash fs-1 mx-3  delete-todo js-delete-todo" href="#"></i>
     `;
 
   //
   // Append the element to the DOM as the last child of
   // the element referenced by the `list` variable
   if (item) {
-    list.replaceChild(listItem, item);
+    list.replaceChild(taskItem, item);
   } else {
-    list.append(listItem);
+    list.append(taskItem);
   }
   //setting the value of text to an external variable
- 
+
   //
   //if some Tasks are added, unshow the welcome message
   checkEmptyState();
@@ -106,7 +109,6 @@ function displayTodo(todo) {
 // text that was entered in the text input, and push it into
 // the `todoItems` array
 function addTodo(text) {
-
   const todo = {
     text,
     checked: false,
@@ -115,19 +117,27 @@ function addTodo(text) {
 
   todoItems.push(todo);
   //console.log(todo);
-  displayTodo(todo);
+  displayTask(todo);
   localStorage.setItem("todos", JSON.stringify(todoItems));
- 
 }
 //
 //
 //
-// toggle between done /undone 
+// toggle between done /undone
 function toggleDone(key) {
   const index = todoItems.findIndex((item) => item.id === Number(key));
   todoItems[index].checked = !todoItems[index].checked;
-  displayTodo(todoItems[index]);
+  displayTask(todoItems[index]);
 }
+//
+//
+//
+//
+// function editTaskName(key){
+
+// }
+
+//
 //
 //
 //
@@ -148,7 +158,7 @@ function deleteTodo(key) {
 
   // remove the item from the local storage
   localStorage.removeItem(todo);
-  displayTodo(todo);
+  displayTask(todo);
   checkEmptyState();
 }
 //
@@ -192,6 +202,11 @@ listen.addEventListener("click", (event) => {
     const itemKey = event.target.parentElement.dataset.key;
     deleteTodo(itemKey);
   }
+
+  if (event.target.classList.contains("edit-task")) {
+    const itemKey = event.target.parentElement.dataset.key;
+    editTaskName(itemKey);
+  }
 });
 
 //
@@ -201,25 +216,24 @@ listen.addEventListener("click", (event) => {
 //
 /// ////-------/Edit the list title
 ////////////////
-//address the edit icon 
-const editIcon = document.querySelector("#edit-list-title");
+//address the edit icon
+const editTitleIcon = document.querySelector("#edit-list-title");
 // a variable to store the title
 const title = document.querySelector("#list-title");
 
 //create a new  div
 const formContainer = document.createElement("div");
-formContainer.setAttribute("class", "w-100 ");
+formContainer.setAttribute("class", "container-fluid w-100 ");
 // inside of the div add a form tag
 const titleForm = document.createElement("form");
 // inside of the form add a input tag
 const titleInput = document.createElement("input");
 //and set the attributes
 titleInput.setAttribute("type", "text");
-titleInput.setAttribute("class", "form-control ");
+titleInput.setAttribute("class", "form-control rounded-4 task-input");
 titleInput.setAttribute("id", "new-list-title");
 titleInput.setAttribute("placeholder", "Enter new title");
 titleInput.setAttribute("required", "");
-
 
 titleForm.append(titleInput);
 formContainer.append(titleForm);
@@ -227,7 +241,7 @@ formContainer.style.display = "none";
 title.parentNode.insertBefore(formContainer, title.nextSibling);
 
 //add an event Listener wich toggles between the title or the form
-editIcon.addEventListener("click", () => {
+editTitleIcon.addEventListener("click", () => {
   title.style.display = "none";
   formContainer.style.display = "block";
 });
@@ -242,4 +256,12 @@ titleForm.addEventListener("submit", (event) => {
   }
   title.style.display = "block";
   formContainer.style.display = "none";
+});
+
+// edit the task text
+const taskText = document.querySelector(".todo-item span");
+console.log(document.querySelector(".todo-item span"));
+
+item.addEventListener("click", (event) => {
+  alert(item.text);
 });
