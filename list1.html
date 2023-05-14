@@ -31,25 +31,87 @@
   </head>
 
   <body>
-    <main>
+    <!-- create lists functionality only displays if the js-left-arrow is clicked -->
+    <section class="create-list">
+      <div class="container col-10 col-sm-9 col-md-8 col-lg-6 col-xl-5 h-auto">
+        <h1 class="app-title display-md-1 my-5">TO-DO APP</h1>
+
+        <div
+          class="row d-flex align-items-center form-color-selector rounded-top-4 rounded-4 p-0"
+        >
+          <form class="js-form-create-list p-0">
+            <input
+              class="form-control rounded-4 mt-0 mb-5 shadow task-input js-create-list-input"
+              autofocus
+              type="text"
+              aria-label="Create a new List"
+              placeholder="Create a new List...."
+            />
+          </form>
+
+          <div class="color-selector shadow rounded-4">
+            <div class="row">
+              <ul class="d-flex justify-content-evenly">
+                <li class="color-item">
+                  <button class="color-icon shadow" id="button-red"></button>
+                </li>
+                <li class="color-item">
+                  <button class="color-icon shadow" id="button-orange"></button>
+                </li>
+                <li class="color-item">
+                  <button class="color-icon shadow" id="button-yellow"></button>
+                </li>
+                <li class="color-item">
+                  <button class="color-icon shadow" id="button-green"></button>
+                </li>
+                <li class="color-item">
+                  <button
+                    class="color-icon shadow"
+                    id="button-lightblue"
+                  ></button>
+                </li>
+                <li class="color-item">
+                  <button class="color-icon shadow" id="button-lila"></button>
+                </li>
+                <li class="color-item">
+                  <button class="color-icon shadow" id="button-pink"></button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <ul
+          class="col-lg-6 col-md-8 col-10 todo-list-container d-flex justify-content-center js-lists"
+        >
+          <!-- at first is empty here -->
+        </ul>
+      </div>
+    </section>
+    <section class="main-section">
       <div class="container h-auto">
         <div class="row">
-          <a href="home_lists.html" class="col-1"
-            ><i class="bi bi-arrow-left fs-1"></i
-          ></a>
+          
+            <a href="index.html">
+              <i class="bi bi-arrow-left fs-1   js-left-arrow"></i>
+            </a>
+          </i>
         </div>
 
         <div class="row">
+           <!-- empty-state welcome message -->
+           <div class="empty-state col-12 text-center">
+            <h1 class="display-1"><i class="bi bi-card-checklist"></i></h1>
+            <h2>You got a lot of things TO-DO</h2>
+            <p>What do you want to get done today?</p>
+          </div>
           <div class="col-lg-2 col-1"></div>
 
           <div
             class="col-lg-8 col-10 d-flex align-items-center justify-content-center"
           >
-            <h1 class="list-title display-1 my-5" id="list-title">
-              My TO-DO #_01
-            </h1>
+            <h1 class="list-title display-1 my-5" id="list-title"></h1>
           </div>
-          <div class="col-lg-2 col-1">
+          <div class="col-lg-2 col-1 d-flex align-items-center justify-content-center">
             <i class="bi bi-pencil fs-5 text-left" id="edit-list-title"></i>
           </div>
         </div>
@@ -58,20 +120,14 @@
         <div class="row d-flex align-items-center">
           <div class="col-lg-3 col-md-2 col-1"></div>
           <div class="col-lg-6 col-md-8 col-10">
-            <!-- empty-state welcome message -->
-            <div class="empty-state col-12 text-center">
-              <h1 class="display-1"><i class="bi bi-card-checklist"></i></h1>
-              <h2>You got a lot of things TO-DO</h2>
-              <p>What do you want to get done today?</p>
-            </div>
-            <!-- input form -->
-            <form class="js-form my-3">
+            <!-- task input form -->
+            <form class="my-3  js-form ">
               <input
                 class="form-control rounded-4 task-input js-todo-input"
                 autofocus
                 type="text"
                 aria-label="Enter a new todo item"
-                placeholder="Add something"
+                placeholder="Add a new task"
               />
             </form>
           </div>
@@ -89,6 +145,9 @@
           <div class="col-lg-3 col-md-2 col-1"></div>
         </div>
       </div>
+    </section>
+    <main class="main-section">
+
     </main>
 
     <footer></footer>

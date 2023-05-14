@@ -60,8 +60,8 @@ background: #F3F0D7;
 }
 
 .color-icon{
-  width: 3em;
-  height: 3em;
+  width: 2.5em;
+  height: 2.5em;
   border-radius: 1.5em;
   border: none;
 }
@@ -143,6 +143,18 @@ background: #F3F0D7;
   background-color:  #538484;
   opacity: 50%;
 } 
+
+
+.task-name-editor{
+  /* border: none; */
+  margin: 0;
+  border-radius: 0.5em;
+  width: 100%;
+  background: transparent;
+}
+
+
+
 
 .trash-icon::before{
  color:  #538484;
