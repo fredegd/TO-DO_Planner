@@ -16,8 +16,9 @@ window.addEventListener('load', () => {
 
         e.target.reset();
 
-        DisplayTodos()
+        DisplayTodos();
     })
+    DisplayTodos();
 })
 
 function DisplayTodos() {
