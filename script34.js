@@ -1,5 +1,5 @@
 window.addEventListener('load', () => {
-    todos = JSON.parse(localStorage.getItem('todos')) || [];
+    todotasks = JSON.parse(localStorage.getItem('todotasks')) || [];
     const newTaskForm = document.querySelector('#new-task-form');
 
     newTaskForm.addEventListener('submit', e => {
@@ -10,9 +10,9 @@ window.addEventListener('load', () => {
             done: false,
         }
 
-        todos.push(todo);
+        todotasks.push(todo);
 
-        localStorage.setItem('todos', JSON.stringify(todos));
+        localStorage.setItem('todotasks', JSON.stringify(todotasks));
 
         e.target.reset();
 
@@ -25,7 +25,7 @@ function DisplayTodos() {
 
     todoList.innerHTML = '';
 
-    todos.forEach(todo => {
+    todotasks.forEach(todo => {
         const todoItem = document.createElement('div');
         todoItem.classList.add('todo-item');
 
@@ -74,7 +74,7 @@ function DisplayTodos() {
 
         input.addEventListener('change', e => {
             todo.done = e.target.checked;
-            localStorage.setItem('todos', JSON.stringify(todos));
+            localStorage.setItem('todotasks', JSON.stringify(todotasks));
 
             if (todo.done) {
                 todoItem.classList.add('done');
@@ -94,14 +94,14 @@ function DisplayTodos() {
             input.addEventListener('blur', e => {
                 input.setAttribute('readonly', true);
                 todo.content = e.target.value;
-                localStorage.setItem('todos', JSON.stringify(todos));
+                localStorage.setItem('todotasks', JSON.stringify(todotasks));
                 DisplayTodos();
             })
         })
 
         deleteButton.addEventListener('click', (e) => {
-            todos = todos.filter(t => t != todo);
-            localStorage.setItem('todos', JSON.stringify(todos));
+            todotasks = todotasks.filter(t => t != todo);
+            localStorage.setItem('todotasks', JSON.stringify(todotasks));
             DisplayTodos();
         })
 
