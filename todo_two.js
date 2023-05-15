@@ -1,9 +1,4 @@
 console.clear();
-let listIndex = 1;
-
-const localStorageTitle = JSON.parse(
-  localStorage.getItem(`titleStored__`)
-);
 
 const createList = document.querySelector(".create-list");
 createList.style.display = "none";
@@ -15,58 +10,6 @@ toggleArrow.addEventListener("click", () => {
   taskEditor.style.display = "none";
   createList.style.display = "block";
 });
-
- let tasksLists = [];
-
-function displayListButtons(taskList){
- // Select the first element with a class of `js-lists`
- const lists = document.querySelector(".js-lists"); // the <ul> element
- const listButton = document.querySelector(`[data-key='${taskList.id}']`); // select every list by their id
- 
-
- let taskListItem = document.createElement("li");
-// Set the class attribute for the li
-taskListItem.setAttribute(
-  "class", `list-button  shadow rounded-4 d-flex-row  align-items-center my-2`);
-
-  // Set the data-key attribute to be the id of the todo
-  taskListItem.setAttribute("data-key", taskList.id);
-// Set the html contents of the `li` element created above
-taskListItem.innerHTML = `
-  <span class="text-start  overflow-hidden mx-0 task-text">${taskList.text}</span>
-
-    `;
-//
-// Append the element to the DOM as the last child of
-// the element referenced by the `list` variable
-if (listButton) {
-  lists.insertBefore(taskList, listButton);
-} else {
-  lists.append(taskList);
-}
-
-}
-
-
-
-
-
-
-function addList(text) {
-  const list = {
-    text,
-    id: Date.now(),
-  };
-  tasksLists.push(list);
- 
-  displayListButtons(list);
-  localStorage.setItem(`listsTitles`, JSON.stringify(tasksLists));
-  location = location; //this will now reload the page
-}
-
-
-
-
 
 let todoTasks = [];
 //this function checks the todoTasks array,
@@ -81,12 +24,8 @@ const checkEmptyState = () => {
   }
 };
 
-
-
 document.addEventListener("DOMContentLoaded", () => {
-  const localStoragetodoTasks = localStorage.getItem(
-    `todos_${localStorageTitle}`
-  );
+  const localStoragetodoTasks = localStorage.getItem("todos");
   if (localStoragetodoTasks) {
     todoTasks = JSON.parse(localStoragetodoTasks);
     sortTasks(todoTasks);
@@ -97,9 +36,18 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     todoTasks = [];
   }
-}); //
+});
 
+//const localStoragetodoTasks = JSON.parse(localStorage.getItem("todos"));
+const localStorageTitle = JSON.parse(localStorage.getItem("titleStored"));
 
+// This is the array that will hold the todo list items
+//let todoTasks = localStoragetodoTasks ? localStoragetodoTasks : [];
+// displayTask(todoTasks);
+
+//localStorageTitle;
+document.querySelector("#list-title").innerHTML = localStorageTitle;
+console.log(localStorageTitle, " is the title");
 //
 //
 //
@@ -107,16 +55,10 @@ document.addEventListener("DOMContentLoaded", () => {
 //____-----Edit the list title------_______
 //____-----*******************------_______
 //
-// a variable to store the title element
-const title = document.querySelector(".list-title"); //the <h1> elmnt
-title.setAttribute("id", "list-title" + listIndex);
-console.log(title.id);
-//localStorageTitle;
-document.querySelector(`#list-title${listIndex}`).innerHTML = localStorageTitle;
-console.log(localStorageTitle, " is the title");
-//
 //address the edit icon
 const editTitleIcon = document.querySelector("#edit-list-title");
+// a variable to store the title element
+const title = document.querySelector("#list-title"); //the <h1> elmnt
 
 //create a new  div
 const formContainer = document.createElement("div");
@@ -128,8 +70,8 @@ const titleInput = document.createElement("input");
 //and set the attributes
 titleInput.setAttribute("type", "text");
 titleInput.setAttribute("class", "form-control rounded-4 title-input");
-titleInput.setAttribute("id", "new-list-title" + listIndex);
-titleInput.setAttribute("value", localStorageTitle ? localStorageTitle : "");
+titleInput.setAttribute("id", "new-list-title");
+titleInput.setAttribute("value", localStorageTitle? localStorageTitle : "");
 titleInput.setAttribute("placeholder", "Enter new title");
 titleInput.setAttribute("required", "");
 
@@ -151,17 +93,14 @@ editTitleIcon.addEventListener("click", () => {
 
 titleForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  const newTitle = document.querySelector(`#new-list-title${listIndex}`).value;
-  localStorage.setItem(`titleStored__`, JSON.stringify(newTitle));
+  const newTitle = document.querySelector("#new-list-title").value;
+  localStorage.setItem("titleStored", JSON.stringify(newTitle));
   if (newTitle) {
     title.textContent = newTitle;
     form.reset();
-    addList(newTitle)
   }
   title.style.display = "block";
   formContainer.style.display = "none";
-  
-  location = location;
 });
 //
 //
@@ -265,8 +204,9 @@ function addTask(text) {
   todoTasks.push(todo);
   sortTasks(todoTasks);
   displayTask(todo);
-  localStorage.setItem(`todos_${localStorageTitle}`, JSON.stringify(todoTasks));
+  localStorage.setItem("todos", JSON.stringify(todoTasks));
   location = location; //this will reload the page
+
 }
 //
 //
@@ -283,7 +223,7 @@ function toggleDone(key) {
     todoTasks[index].checked ? "is done" : "still working on it"
   );
   sortTasks(todoTasks);
-  localStorage.setItem(`todos_${localStorageTitle}`, JSON.stringify(todoTasks));
+  localStorage.setItem("todos", JSON.stringify(todoTasks));
   // displayTask(todoTasks[index]);
   location = location; //this will reload the page
 }
@@ -315,37 +255,35 @@ function sortTasks(arr) {
 //____-----Edit Task Name--------_______
 //____-----**************--------_______
 
+
 function editTaskName(key) {
   const index = todoTasks.findIndex((item) => item.id === Number(key));
 
-  const taskNameElement = document.querySelector(
-    `[data-key="${key}"] .task-text`
-  );
+  const taskNameElement = document.querySelector(`[data-key="${key}"] .task-text`);
   const taskNameInput = document.createElement("input");
   const taskNameForm = document.createElement("form");
 
-  taskNameInput.setAttribute("type", "text");
-  taskNameInput.setAttribute("value", taskNameElement.innerText);
-  taskNameInput.setAttribute("class", "task-name-editor");
-  taskNameForm.append(taskNameInput);
+  taskNameInput.setAttribute('type', 'text');
+  taskNameInput.setAttribute('value', taskNameElement.innerText);
+  taskNameInput.setAttribute('class', "task-name-editor");
+  taskNameForm.append(taskNameInput)
   taskNameElement.replaceWith(taskNameForm);
+  
 
   taskNameForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const newTaskName = taskNameInput.value;
 
-    if (newTaskName.trim() !== "") {
+    if (newTaskName.trim() !== '') {
       taskNameElement.innerText = newTaskName;
       taskNameForm.replaceWith(taskNameElement);
       todoTasks[index].text = newTaskName;
     }
-    // Update the task name in localStorage
-    localStorage.setItem(
-      `todos_${localStorageTitle}`,
-      JSON.stringify(todoTasks)
-    );
+          // Update the task name in localStorage
+    localStorage.setItem('todos', JSON.stringify(todoTasks));
   });
 }
+
 
 //
 //
@@ -378,10 +316,7 @@ function deleteTodo(key) {
     todoTasks = todoTasks.filter((item) => item.id !== Number(key));
 
     // remove the item from the local storage
-    localStorage.setItem(
-      `todos_${localStorageTitle}`,
-      JSON.stringify(todoTasks)
-    );
+    localStorage.setItem("todos", JSON.stringify(todoTasks));
     displayTask(todo);
     checkEmptyState();
   }
