@@ -54,6 +54,10 @@ form {
 .form-color-selector{
 background: #F3F0D7;
 }
+
+.color-selector{
+  display: none;
+}
 /*  */
 .color-item{
   list-style: none;
